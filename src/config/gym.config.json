@@ -1,0 +1,93 @@
+{
+  "gymId": "apex-fitness-test-account",
+  "gymName": "Apex Fitness (Test Account)",
+  "tagline": "Train Hard. Live Strong.",
+  "phone": "+254799004276",
+  "whatsappNumber": "254799004276",
+  "email": "testclient@jengasystems.online",
+  "location": "Nairobi, Kenya",
+  "googleMapsEmbed": "https://maps.google.com/maps?q=Apex%20Fitness%20(Test%20Account)%2C%20Nairobi%2C%20Kenya&output=embed&z=16",
+  "logoUrl": "",
+  "heroImageUrl": "",
+  "galleryImages": [],
+  "primaryColor": "#FF4E1A",
+  "accentColor": "#1A1A1A",
+  "templateVariant": "V1",
+  "aboutTitle": "About Apex Fitness (Test Account)",
+  "aboutDescription": "Apex Fitness (Test Account) is a premier fitness facility in Nairobi. We provide world-class equipment, expert trainers, and a community dedicated to helping you reach your fitness goals.",
+  "services": [
+    {
+      "name": "Weight Training",
+      "icon": "dumbbell",
+      "desc": "Build strength with expert guidance.",
+      "image": ""
+    },
+    {
+      "name": "Cardio",
+      "icon": "heart",
+      "desc": "Boost endurance and burn calories.",
+      "image": ""
+    },
+    {
+      "name": "HIIT",
+      "icon": "zap",
+      "desc": "High-intensity interval training.",
+      "image": ""
+    },
+    {
+      "name": "Yoga",
+      "icon": "activity",
+      "desc": "Flexibility, balance, and mindfulness.",
+      "image": ""
+    }
+  ],
+  "membershipPlans": [
+    {
+      "name": "Basic",
+      "price": 2500,
+      "currency": "KES",
+      "period": "month",
+      "features": [
+        "Full gym access",
+        "Locker room"
+      ],
+      "highlight": false
+    },
+    {
+      "name": "Pro",
+      "price": 4500,
+      "currency": "KES",
+      "period": "month",
+      "features": [
+        "Full gym access",
+        "Personal trainer 2x/week",
+        "Nutrition plan"
+      ],
+      "highlight": true,
+      "badge": "Most Popular"
+    },
+    {
+      "name": "Elite",
+      "price": 7500,
+      "currency": "KES",
+      "period": "month",
+      "features": [
+        "Everything in Pro",
+        "Unlimited PT sessions",
+        "Recovery zone"
+      ],
+      "highlight": false
+    }
+  ],
+  "trainers": [],
+  "testimonials": [],
+  "socialLinks": {
+    "instagram": "",
+    "facebook": "",
+    "whatsapp": "254799004276"
+  },
+  "paystackPublicKey": "",
+  "deployedUrl": "",
+  "vercelProjectId": "apex-fitness-test-account",
+  "supabaseRowId": "8e03cbee-72ec-4a6d-ab07-d57c147e83b7"
+}
