@@ -1,10 +1,10 @@
 {
   "gymId": "demo-gym",
-  "gymName": "IRONCLAD FITNESS",
+  "gymName": "PRESTIGE FITNESS",
   "tagline": "Built Different. Train Different.",
   "subTagline": "Nairobi's most results-driven training facility. No excuses, just progress.",
   "phone": "+254 700 000 000",
-  "email": "hello@ironclad.co.ke",
+  "email": "hello@prestigefitness.co.ke",
   "location": "Westlands, Nairobi, Kenya",
   "googleMapsEmbed": "https://maps.google.com/maps?q=Westlands+Nairobi&output=embed",
   "logoUrl": "",
@@ -32,7 +32,7 @@
     { "value": "30+", "label": "Classes / Week" }
   ],
   "aboutTitle": "We Don't Do Half Reps. In Training or in Life.",
-  "aboutDescription": "Ironclad Fitness was built for people who are serious about results. No gimmicks, no overcrowded machines, no egos. Just a community of people who show up, put in the work, and leave better than they came in.\n\nWhether you're picking up your first dumbbell or training for your next competition — you belong here.",
+  "aboutDescription": "Prestige Fitness was built for people who are serious about results. No gimmicks, no overcrowded machines, no egos. Just a community of people who show up, put in the work, and leave better than they came in.\n\nWhether you're picking up your first dumbbell or training for your next competition — you belong here.",
   "services": [
     { "name": "Weight Training", "icon": "", "desc": "Fully equipped free weights and machines. From beginners to powerlifters, we've got your setup.", "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80" },
     { "name": "HIIT Classes", "icon": "", "desc": "High-intensity interval training designed to torch fat and build endurance. 45 minutes, max results.", "image": "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=800&q=80" },
@@ -143,7 +143,7 @@
       "statAfter": "84kg",
       "change": "-18kg",
       "highlight": "Dropped 4 trouser sizes",
-      "quote": "I'd tried three gyms before this. None of them actually pushed me. Ironclad was different — the coaches remember your name, they push you when you want to quit, and they celebrate every win. Best decision I've made.",
+      "quote": "I'd tried three gyms before this. None of them actually pushed me. Prestige was different — the coaches remember your name, they push you when you want to quit, and they celebrate every win. Best decision I've made.",
       "program": "30-Day Shred → Pro Membership"
     },
     {
@@ -188,7 +188,7 @@
       "experience": "6 Years",
       "image": "https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400&q=80",
       "coverImage": "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=1200&q=80",
-      "bio": "Aisha is the energy of Ironclad. Her HIIT and yoga classes have become the most popular in the gym — not because they're easy, but because she somehow makes suffering feel fun. She holds a diploma in Nutrition Science and designs custom meal plans for members who want results beyond the gym floor.",
+      "bio": "Aisha is the energy of Prestige Fitness. Her HIIT and yoga classes have become the most popular in the gym — not because they're easy, but because she somehow makes suffering feel fun. She holds a diploma in Nutrition Science and designs custom meal plans for members who want results beyond the gym floor.",
       "certifications": ["ACE Certified Personal Trainer", "Yoga Alliance 200-HR", "Diploma in Nutrition Science", "Precision Nutrition Level 1"],
       "specialties": ["HIIT", "Fat Loss", "Yoga & Mobility", "Nutrition Coaching", "Group Fitness"],
       "availableDays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -255,7 +255,7 @@
     "tiktok": ""
   },
   "whatsappNumber": "254700000000",
-  "whatsappMessage": "Hi! I'd like to know more about joining Ironclad Fitness.",
+  "whatsappMessage": "Hi! I'd like to know more about joining Prestige Fitness.",
   "trialCTA": "Claim Your Free 7-Day Trial",
   "paystackPublicKey": "",
   "deployedUrl": "",

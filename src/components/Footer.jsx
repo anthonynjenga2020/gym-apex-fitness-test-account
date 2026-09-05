@@ -1,12 +1,15 @@
+import { Link } from 'react-router-dom'
+
 export default function Footer({ config }) {
   const year = new Date().getFullYear()
 
   const links = [
-    { label: 'About', href: '#about' },
-    { label: 'Classes', href: '#classes' },
-    { label: 'Trainers', href: '#trainers' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Group Classes', href: '/classes' },
+    { label: 'Personal Trainers', href: '/trainers' },
+    { label: 'Training Facilities', href: '/facilities' },
+    { label: 'Membership Plans', href: '/memberships' },
+    { label: 'Pro Shop & Gear', href: '/shop' },
+    { label: 'Help & FAQ', href: '/faq' },
   ]
 
   return (
@@ -26,13 +29,20 @@ export default function Footer({ config }) {
                 {config.gymName}
               </span>
             </div>
-            <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
-              {config.subTagline}
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-4">
+              {config.subTagline || config.tagline}
             </p>
+            <p className="text-xs text-gray-500 font-mono">
+              📍 {config.location}
+            </p>
+
             {/* Socials */}
             <div className="flex gap-3 mt-6">
-              {config.socialLinks.instagram && (
-                <a href={config.socialLinks.instagram} target="_blank" rel="noopener noreferrer"
+              {config.socialLinks?.instagram && (
+                <a
+                  href={config.socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-9 h-9 rounded-sm border flex items-center justify-center text-gray-500 hover:text-white hover:border-primary transition-colors"
                   style={{ borderColor: 'var(--border)' }}
                 >
@@ -41,18 +51,11 @@ export default function Footer({ config }) {
                   </svg>
                 </a>
               )}
-              {config.socialLinks.facebook && (
-                <a href={config.socialLinks.facebook} target="_blank" rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-sm border flex items-center justify-center text-gray-500 hover:text-white hover:border-primary transition-colors"
-                  style={{ borderColor: 'var(--border)' }}
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                </a>
-              )}
-              {config.socialLinks.whatsapp && (
-                <a href={config.socialLinks.whatsapp} target="_blank" rel="noopener noreferrer"
+              {config.socialLinks?.whatsapp && (
+                <a
+                  href={config.socialLinks.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-9 h-9 rounded-sm border flex items-center justify-center text-gray-500 hover:text-[#25D366] hover:border-[#25D366] transition-colors"
                   style={{ borderColor: 'var(--border)' }}
                 >
@@ -66,16 +69,16 @@ export default function Footer({ config }) {
 
           {/* Links */}
           <div>
-            <p className="text-gray-500 text-xs uppercase tracking-[0.2em] font-bold mb-6">Quick Links</p>
+            <p className="text-gray-400 text-xs uppercase tracking-[0.2em] font-bold mb-6">Explore</p>
             <ul className="space-y-3">
-              {links.map(link => (
+              {links.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-white text-sm transition-colors hover:pl-2 transition-all duration-200"
+                  <Link
+                    to={link.href}
+                    className="text-gray-400 hover:text-white text-xs uppercase tracking-wider transition-all block hover:translate-x-1"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -83,15 +86,15 @@ export default function Footer({ config }) {
 
           {/* Hours */}
           <div>
-            <p className="text-gray-500 text-xs uppercase tracking-[0.2em] font-bold mb-6">Opening Hours</p>
+            <p className="text-gray-400 text-xs uppercase tracking-[0.2em] font-bold mb-6">Operating Hours</p>
             <ul className="space-y-3">
               {[
                 { day: 'Mon – Fri', hours: '5:00 AM – 10:00 PM' },
                 { day: 'Saturday', hours: '6:00 AM – 8:00 PM' },
                 { day: 'Sunday', hours: '7:00 AM – 6:00 PM' },
               ].map((item, i) => (
-                <li key={i} className="flex justify-between text-sm">
-                  <span className="text-gray-500">{item.day}</span>
+                <li key={i} className="flex justify-between text-xs">
+                  <span className="text-gray-400">{item.day}</span>
                   <span className="text-white font-medium">{item.hours}</span>
                 </li>
               ))}
@@ -100,21 +103,21 @@ export default function Footer({ config }) {
               href={`https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent('Hi! I want to claim my free 7-day trial.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary inline-block mt-6 px-6 py-3 rounded-sm text-sm"
+              className="btn-primary inline-block mt-6 px-6 py-3 rounded-sm text-xs font-black uppercase tracking-wider"
             >
-              Free Trial →
+              Claim Free Pass →
             </a>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="pt-8 border-t flex flex-col sm:flex-row justify-between items-center gap-4" style={{ borderColor: 'var(--border)' }}>
-          <p className="text-gray-600 text-xs">
+          <p className="text-gray-500 text-xs">
             © {year} {config.gymName}. All rights reserved.
           </p>
-          <p className="text-gray-700 text-xs">
-            Website powered by{' '}
-            <a href="https://jengasystems.online" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-primary transition-colors">
+          <p className="text-gray-500 text-xs">
+            Powered by{' '}
+            <a href="https://jengasystems.online" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors font-bold">
               Jenga Systems
             </a>
           </p>

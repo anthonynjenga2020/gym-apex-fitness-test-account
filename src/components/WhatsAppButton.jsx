@@ -26,7 +26,7 @@ export default function WhatsAppButton({ config }) {
   ]
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-40 hidden lg:block">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -34,7 +34,7 @@ export default function WhatsAppButton({ config }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-20 right-0 w-[350px] bg-[#111B21] rounded-2xl shadow-2xl overflow-hidden border border-gray-800"
+            className="absolute bottom-20 right-0 w-[calc(100vw-3rem)] max-w-[350px] bg-[#111B21] rounded-2xl shadow-2xl overflow-hidden border border-gray-800 max-h-[85vh] overflow-y-auto"
           >
             {/* Header */}
             <div className="bg-[#00A884] p-4 flex justify-between items-center">

@@ -5,6 +5,7 @@ import Classes from '../sections/Classes.jsx'
 import Schedule from '../sections/Schedule.jsx'
 import Transformation from '../sections/Transformation.jsx'
 import Programs from '../sections/Programs.jsx'
+import FacilitiesSection from '../sections/FacilitiesSection.jsx'
 import Trainers from '../sections/Trainers.jsx'
 import Gallery from '../sections/Gallery.jsx'
 import Testimonials from '../sections/Testimonials.jsx'
@@ -20,14 +21,14 @@ import BMICalculator from '../sections/BMICalculator.jsx'
 import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 
-export default function HomePage({ config }) {
+export default function HomePage({ config, onOpenQuiz }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     // Show loader for a brief period on initial mount
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 1500)
+    }, 1200)
     return () => clearTimeout(timer)
   }, [])
 
@@ -38,7 +39,7 @@ export default function HomePage({ config }) {
       </AnimatePresence>
 
       <main className={loading ? "opacity-0 h-screen overflow-hidden" : "opacity-100 transition-opacity duration-1000"}>
-        <Hero config={config} />
+        <Hero config={config} onOpenQuiz={onOpenQuiz} />
         <Marquee />
         <Stats config={config} />
         <About config={config} />
@@ -47,12 +48,13 @@ export default function HomePage({ config }) {
         <BMICalculator config={config} />
         <Schedule config={config} />
         <Transformation config={config} />
+        <FacilitiesSection config={config} />
         <Programs config={config} />
         <Trainers config={config} />
         <Gallery config={config} />
         <Testimonials config={config} />
         <Pricing config={config} />
-        <CTA config={config} />
+        <CTA config={config} onOpenQuiz={onOpenQuiz} />
         <FreeTrialForm config={config} />
         <FAQ config={config} />
         <Contact config={config} />

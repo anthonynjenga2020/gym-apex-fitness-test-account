@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import MagneticButton from '../components/MagneticButton.jsx'
 
-export default function Hero({ config }) {
+export default function Hero({ config, onOpenQuiz }) {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const SLIDES = [
     {
       image: config.heroImageUrl || "/gym (1).jpg",
       headline: config.gymName.split(' ')[0],
-      subHeadline: config.gymName.split(' ').slice(1).join(' ') || 'GYM',
+      subHeadline: config.gymName.split(' ').slice(1).join(' ') || 'FITNESS',
       tagline: config.tagline,
       subTagline: config.subTagline
     },
@@ -16,15 +17,15 @@ export default function Hero({ config }) {
       image: "/gym (2).jpg",
       headline: "Push Past",
       subHeadline: "Your Limits",
-      tagline: "Expert trainers, state-of-the-art equipment.",
-      subTagline: "We provide everything you need to succeed and conquer your goals."
+      tagline: "Olympic standard gear, master strength coaches.",
+      subTagline: "Everything you need to surpass your goals and dominate your training."
     },
     {
       image: "/gym (4).jpg",
       headline: "Embrace The",
       subHeadline: "Grind",
-      tagline: "Transform your body, mind, and spirit.",
-      subTagline: "Start your fitness journey with us today and never look back."
+      tagline: "Transform your body, mind, and athletic power.",
+      subTagline: "Start your 7-day free trial today. Zero commitment, 100% results."
     }
   ]
 
@@ -33,7 +34,7 @@ export default function Hero({ config }) {
       setCurrentSlide((prev) => (prev + 1) % SLIDES.length)
     }, 6000)
     return () => clearInterval(timer)
-  }, [])
+  }, [SLIDES.length])
 
   return (
     <section
@@ -41,15 +42,15 @@ export default function Hero({ config }) {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: 'var(--bg)' }}
     >
-      {/* Background Images Carousel */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Images Carousel with subtle Ken-Burns motion */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, scale: 1.05 }}
+            initial={{ opacity: 0, scale: 1.08 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
+            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0"
           >
             <img
@@ -57,20 +58,19 @@ export default function Hero({ config }) {
               alt={SLIDES[currentSlide].headline}
               className="w-full h-full object-cover object-center"
             />
-            {/* Dark gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/85 to-[#0A0A0A]/40" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Glowing orb */}
+      {/* Glowing accent orb */}
       <div
         className="absolute top-1/3 right-1/4 w-[600px] h-[600px] rounded-full blur-[160px] opacity-20 z-0 pointer-events-none"
         style={{ backgroundColor: 'var(--primary)' }}
       />
 
-      {/* Grid pattern */}
+      {/* Grid pattern overlay */}
       <div
         className="absolute inset-0 z-0 opacity-[0.03]"
         style={{
@@ -82,8 +82,8 @@ export default function Hero({ config }) {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-32 pb-20 w-full">
         <div className="max-w-3xl">
-          {/* Eyebrow */}
-          <motion.div 
+          {/* Eyebrow badge */}
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -123,35 +123,38 @@ export default function Hero({ config }) {
               <p className="text-gray-300 text-xl sm:text-2xl font-medium italic mb-3 pl-1">
                 "{SLIDES[currentSlide].tagline}"
               </p>
-              <p className="text-gray-500 text-base sm:text-lg font-light mb-10 pl-1 max-w-xl">
+              <p className="text-gray-400 text-base sm:text-lg font-light mb-10 pl-1 max-w-xl">
                 {SLIDES[currentSlide].subTagline}
               </p>
             </motion.div>
           </AnimatePresence>
 
-          {/* CTAs */}
-          <motion.div 
+          {/* CTAs with Magnetic Buttons */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap items-center gap-4"
           >
-            <a
-              href="#pricing"
-              className="btn-primary px-8 py-4 rounded-sm text-base inline-block"
+            <MagneticButton>
+              <a
+                href="#free-trial"
+                className="btn-primary px-8 py-4 rounded-sm text-sm font-black uppercase tracking-wider inline-block shadow-2xl"
+              >
+                {config.trialCTA || 'Claim 7-Day Free Trial'}
+              </a>
+            </MagneticButton>
+
+            <button
+              onClick={onOpenQuiz}
+              className="px-6 py-4 rounded-sm text-sm font-bold uppercase tracking-wider text-white border border-white/20 bg-surface/80 hover:bg-white/10 transition-all flex items-center gap-2"
             >
-              {config.trialCTA}
-            </a>
-            <a
-              href="#classes"
-              className="btn-outline px-8 py-4 rounded-sm text-base inline-block"
-            >
-              See Our Classes
-            </a>
+              <span>🎯</span> Workout Quiz Matcher
+            </button>
           </motion.div>
 
           {/* Carousel Indicators */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
@@ -161,14 +164,16 @@ export default function Hero({ config }) {
               <button
                 key={idx}
                 onClick={() => setCurrentSlide(idx)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentSlide ? 'w-12 bg-primary' : 'w-4 bg-white/20 hover:bg-white/40'}`}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  idx === currentSlide ? 'w-12 bg-primary' : 'w-4 bg-white/20 hover:bg-white/40'
+                }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
             ))}
           </motion.div>
 
           {/* Trust bar */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
@@ -179,7 +184,7 @@ export default function Hero({ config }) {
                 <span className="font-headline font-black text-2xl" style={{ color: 'var(--primary)' }}>
                   {stat.value}
                 </span>
-                <span className="text-gray-500 text-xs uppercase tracking-wider font-medium">
+                <span className="text-gray-400 text-xs uppercase tracking-wider font-medium">
                   {stat.label}
                 </span>
                 {i < config.stats.length - 1 && (
@@ -192,9 +197,9 @@ export default function Hero({ config }) {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-        <span className="text-gray-600 text-xs uppercase tracking-[0.3em]">Scroll</span>
-        <div className="w-px h-12 relative overflow-hidden" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 pointer-events-none">
+        <span className="text-gray-500 text-[10px] uppercase tracking-[0.3em]">Scroll Down</span>
+        <div className="w-px h-10 relative overflow-hidden" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
           <div
             className="absolute top-0 left-0 w-full"
             style={{
