@@ -60,10 +60,10 @@ export default function GymConciergeWidget({ config, onOpenQuiz }) {
     setIsSending(true)
 
     try {
-      // Determine API URL (Local Next.js dashboard backend is at localhost:3000)
+      // Determine API URL (Local Next.js dashboard backend is at localhost:3000, Live backend at jengasystems.online)
       const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://localhost:3000/api/ai-agents/chat'
-        : '/api/ai-agents/chat'
+        : 'https://jengasystems.online/api/ai-agents/chat'
 
       const res = await fetch(apiUrl, {
         method: 'POST',
