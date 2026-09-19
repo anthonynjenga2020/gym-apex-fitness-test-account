@@ -14,6 +14,7 @@ export default function GymConciergeWidget({ config, onOpenQuiz }) {
   const [inputMsg, setInputMsg] = useState('')
   const [isSending, setIsSending] = useState(false)
   const [sessionId] = useState(() => `web-visitor-${Math.floor(1000 + Math.random() * 9000)}`)
+  const [conversationId, setConversationId] = useState(null)
   const messagesEndRef = useRef(null)
   const navigate = useNavigate()
 
@@ -70,31 +71,34 @@ export default function GymConciergeWidget({ config, onOpenQuiz }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           niche: 'gym',
+          business_name: config?.gymName || 'Prestige Fitness',
           message: userMsg.text,
           phone: sessionId,
           channel: 'widget',
+          conversation_id: conversationId,
         })
       })
 
       const data = await res.json()
       if (data && data.response) {
+        if (data.conversation_id) setConversationId(data.conversation_id)
         setChatMessages(prev => [...prev, { role: 'assistant', text: data.response }])
       } else {
         setChatMessages(prev => [
           ...prev, 
           { 
             role: 'assistant', 
-            text: `Our monthly memberships start from Ksh 3,999/mo including gym floor, classes, and locker access. Would you like to book a free 7-day trial?` 
+            text: `Habari! Our monthly gym membership starts at Ksh 2,500 with full access, and we also have personal training packages. Are you looking to join for general fitness or 1-on-1 coaching? 😊` 
           }
         ])
       }
     } catch (err) {
-      // Friendly fallback if backend is offline
+      console.error('[GymConciergeWidget Error]', err)
       setChatMessages(prev => [
         ...prev,
         {
           role: 'assistant',
-          text: `Thanks for asking! ${config?.gymName || 'Prestige Fitness'} is open Mon–Sat (5:30 AM – 9:00 PM) and Sundays (8:00 AM – 5:00 PM). Feel free to click 'Direct WhatsApp' below to speak with our manager!`
+          text: `Thanks for asking! ${config?.gymName || 'Prestige Fitness'} is open Monday to Friday (5:30 AM – 9:30 PM), Saturday (7:00 AM – 7:00 PM), and Sunday (8:00 AM – 4:00 PM). Would you like to book a complimentary trial workout?`
         }
       ])
     } finally {
